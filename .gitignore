@@ -1,0 +1,38 @@
+# ---- Python ----
+__pycache__/*
+apps/*/migrations/*
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg*
+*.manifest
+*.spec
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# ---- Django ----
+# SQLite database (if using SQLite)
+db.sqlite3
+db.sqlite3-journal
+
+# Local settings
+*.log
+*.pot
+*.pyc
+local_settings.py
+.env
+*.env
+
+
+# Media & static files (if generated locally)
+media/
+staticfiles/
+static/
+assets/
+
+# Django migrations (OPTIONAL to ignore)
+#
