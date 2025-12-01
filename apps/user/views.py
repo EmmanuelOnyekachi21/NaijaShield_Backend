@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from apps.user.models import User
 from rest_framework.decorators import api_view
 from apps.user.serializers import UserSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 @api_view(['GET'])
 def user(request, public_id):
