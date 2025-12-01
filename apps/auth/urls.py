@@ -1,5 +1,5 @@
 """
-URL configuration for apps project.
+URL configuration for auth app.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from apps.auth.views import register_user
+from apps.auth.views import login_user
+from apps.auth.views import refresh
+from apps.auth.views import logout_user
+from apps.auth.views import user_profile
 urlpatterns = [
-    path('users/', include('apps.user.urls')),
-    path('auth/', include('apps.auth.urls')),
+    path('register/', register_user, name="register_user"),
+    path('login/', login_user, name="login_user"),
+    path('refresh/', refresh, name="refresh"),
+    path('logout/', logout_user, name="logout"),
+    path('me/', user_profile, name="user_profile"),
 ]

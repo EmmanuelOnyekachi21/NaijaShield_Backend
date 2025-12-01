@@ -42,9 +42,13 @@ INSTALLED_APPS = [
     # Third party apps
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+
     # Local apps
     'apps',
     'apps.user',
+    'apps.auth',
 ]
 
 MIDDLEWARE = [
@@ -138,9 +142,23 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings/development.py
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # React development server
-    "http://localhost:8080",  # Vue development server
-    # "http://127.0.0.1:3000",  # Alternative localhost format
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",  # React development server
+#     "http://localhost:8080",  # Vue development server
+#     # "http://127.0.0.1:3000",  # Alternative localhost format
+# ]
+
+# Only for development testing - never use in production
+CORS_ALLOW_ALL_ORIGINS = True
+
 AUTH_USER_MODEL = 'user.User'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'public_id',
+}
+
