@@ -5,6 +5,7 @@ class UserSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(source='public_id', read_only=True)
     created_at = serializers.DateTimeField(read_only=True)
     updated_at = serializers.DateTimeField(read_only=True)
+    profile_completion = serializers.IntegerField(read_only=True)
     class Meta:
         model = User
         fields = [
@@ -18,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
             'is_staff',
             'is_superuser',
             'created_at',
-            'updated_at'
+            'updated_at',
+            'profile_completion'
         ]
         read_only_fields = ['is_staff', 'is_superuser', 'is_active']
