@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import cloudinary
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     "django.contrib.gis",
+    "cloudinary",
+    "cloudinary_storage",
 
     # Local apps
     'apps',
@@ -153,10 +157,22 @@ AUTH_USER_MODEL = 'user.User'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    "DEFAULT_PARSER_CLASSES": [
+        "rest_framework.parsers.JSONParser",
+        "rest_framework.parsers.FormParser",
+        "rest_framework.parsers.MultiPartParser",
+    ]
 }
 
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'public_id',
 }
 
+# Cloudinary
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": config('CLOUD_NAME'),
+    "API_KEY": config('API_KEY'),
+    "API_SECRET": config('API_SECRET'),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

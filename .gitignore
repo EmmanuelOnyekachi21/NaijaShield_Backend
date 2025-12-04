@@ -36,3 +36,6 @@ assets/
 
 # Django migrations (OPTIONAL to ignore)
 #
+TESTING_*
+setup*
+API_DOCS*

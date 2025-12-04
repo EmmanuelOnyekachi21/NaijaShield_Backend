@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, UserActivity, TrustBadge
 
 
 @admin.register(User)
@@ -8,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('role', 'is_active', 'is_staff', 'is_superuser')
     search_fields = ('email', 'phone_number')
     ordering = ('created_at',)
-
+    
     fieldsets = (
         (None, {'fields': (
             'first_name',
@@ -51,3 +51,6 @@ class UserAdmin(admin.ModelAdmin):
         ),
     )
 
+
+admin.site.register(UserActivity)
+admin.site.register(TrustBadge)

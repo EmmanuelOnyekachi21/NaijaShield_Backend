@@ -21,4 +21,7 @@ from . import views
 urlpatterns = [
     path('<uuid:public_id>/', views.user, name="get_user"),
     path('', views.users, name="get_users"),
+    path('search/', views.search_users, name="search_users"),
+    path('badge-status/', views.badge_status, name='badge-status'),
+    path('activity/', views.user_activity, name='user-activity')
 ]
